@@ -1,0 +1,12 @@
+Fishing log for 2021-10-19: 
+---------------------------
+
+[('bass', 2), ('perch', 1), ('salmon', 1), ('smelt', 1), ('tuna', 2)]
+
+----------Updated Fish and class attributes for the Habitat on this day----------
+
+bass is part of the ocean habitat and tastes okay
+perch is part of the ocean habitat and tastes weird
+salmon is part of the ocean habitat and tastes good
+smelt is part of the ocean habitat and tastes bad
+tuna is part of the ocean habitat and tastes delicious
