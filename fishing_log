@@ -201,7 +201,7 @@ unique_list.sort()
 print("\nPlease enter your opinion on how each fish tastes for your log.")
 
 for fish in unique_list:
-    taste = input("how does " + fish + " taste to you?\n\nChoices:\nokay\nbad\
+    taste = input("How does " + fish + " taste to you?\n\nChoices:\nokay\nbad\
                   \ngood\nyummy\ndelicious\nweird\nunknown\n\n").lower()
     if taste not in Fish.TASTES:
         print("Please select one of the provided taste options.\n")
@@ -239,15 +239,13 @@ while True:
             print("Please enter a fish from your log, try again.\n")
             continue
         else:
-            #print(*fish_dict.keys(),sep=", ")
-            #print("\n")
-            print("Available habitats: ",Fish.HABITATS)
+            print("Available habitats: ")
+            print(*Fish.HABITATS,sep=", ",end="")
             new_habitat = input("Please enter a new habitat to update for\
  your fish: ").lower()
+            #using private method update to update value and store for log
             updated_habitat_dict[fish_to_fix] = fish_dict[fish_to_fix].\
-                _Fish__set_habitat(new_habitat) #using private method update
-            #fish_dict[fish_to_fix] = Fish(species = fish_to_fix, habitat =\
-            #new_habitat, taste = taste_dict[fish_to_fix])
+                _Fish__set_habitat(new_habitat)
             print("\nHere are your updated values: ")
             for k,v in fish_dict.items():
                 print(k,":",v)
@@ -271,15 +269,13 @@ while True:
             print("Please enter a fish from your log, try again.\n")
             continue
         else:
-            #print(*fish_dict.keys(),sep=", ")
-            #print("\n")
-            print("Available taste values: ",Fish.TASTES)
+            print("Available taste values: ")
+            print(*Fish.TASTES,sep=", ",end="")
             new_taste = input("Please enter a new taste to update for\
  your fish: ").lower()
+            # using public method to update value and store for log
             updated_taste_dict[fish_to_fix] = fish_dict[fish_to_fix].\
-                update_taste(new_taste) # using public method to update value
-            #Fish(species = fish_to_fix, habitat =\
-            #new_habitat, taste = taste_dict[fish_to_fix])
+                update_taste(new_taste)
             print("\nHere are your updated values: ")
             for k,v in fish_dict.items():
                 print(k,":",v)
@@ -290,10 +286,9 @@ while True:
         print("That isn't a valid response, please try again")
         continue   
         
-#2021-10-20_fishing_log.txt    
-    
 # create output to use in output file        
 fish_output = "\n".join(str(v) for k, v in fish_dict.items())
+updated_habitats = "\n".join(str(v) for k, v in updated_habitat_dict.items())
 updated_tastes = "\n".join(str(v) for k, v in updated_taste_dict.items())
 
 # create a fishing log object based on today's date
@@ -303,7 +298,7 @@ today_output = str(today) + "_fishing_log.txt"
 # use the fishing log object as the output file name
 output_file = open(today_output,"w")
 
-# create file output contents for output file
+# write file output contents for output file
 header = "Fishing log for " + str(today) +": \n"
 output_file.write(header)
 output_file.write("-"*27)
@@ -311,11 +306,13 @@ output_file.write("\n\n")
 output_file.write(str(fish_list_tuples))
 output_file.write("\n\n")
 output_file.write("-"*10)
-output_file.write("Updated Fish and class attributes for the Habitat on this\
+output_file.write("Updated Fish and class attributes for the habitat on this\
  day")
 output_file.write("-"*10)
 output_file.write("\n\n")
 output_file.write(fish_output)
+output_file.write("\n\nUpdated habitat values: ")
+output_file.write(updated_habitats)
 output_file.write("\n\nUpdated taste values: ")
 output_file.write(updated_tastes)
 
@@ -324,5 +321,3 @@ print("\n\nThank you! Your fishing log for",today,"has been created!")
 # close files at the end of the program
 my_file.close()
 output_file.close()
-
-
