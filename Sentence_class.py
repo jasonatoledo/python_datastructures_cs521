@@ -1,11 +1,11 @@
    
-    In this problem, I had to build a class called "Sentence" that would take
+"""   In this problem, I had to build a class called "Sentence" that would take
 a sentence as a parameter (defualt is empty string) and remove all of the
 punctuations then convert it to a list object. I then had to create several
 methods as requested and use a if __name__ block & assert to test one of the
 methods. This was really fun and a great way to get more familar with classes!
-
 """
+
 import random
 import string
 
